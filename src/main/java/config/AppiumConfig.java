@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
+//
 //{
 //        "platformName": "Android",
 //        "deviceName": "Qa",
