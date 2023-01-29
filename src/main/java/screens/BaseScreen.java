@@ -27,4 +27,20 @@ public class BaseScreen {
         new WebDriverWait(driver,time)
                 .until(ExpectedConditions.visibilityOf(element));
     }
+    public void pause(int time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean isDisplayedWithExp(MobileElement element,int time){
+        try {
+            should(element, time);
+            return element.isDisplayed();
+        }catch (Exception ex){
+            return false;
+        }
+    }
 }
