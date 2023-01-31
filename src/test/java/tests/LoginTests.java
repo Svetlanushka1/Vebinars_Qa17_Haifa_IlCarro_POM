@@ -12,12 +12,12 @@ import screens.SplashScreen;
 
 public class LoginTests extends AppiumConfig {
     @Test
-    public void successLogin(){
-       Assert.assertTrue(new SearchScreen(driver)
-               .openMoreOptions()
+    public void successLogin() {
+        Assert.assertTrue(new SearchScreen(driver)
+                .openMoreOptions()
                 .openFormLogin()
-                .fillEmail("noa@gmail.com")
-                .fillPassword("Nnoa12345$")
+                .fillEmail("haifa@gmail.com")
+                .fillPassword("Haifa082022$")
                 .submitLogin()
                 .isSearchScreenDisplaeyd());
 
@@ -27,20 +27,24 @@ public class LoginTests extends AppiumConfig {
 
 
     }
+
     @Test
-    public void successLoginModel(){
+    public void successLoginModel() {
         Assert.assertTrue(new SearchScreen(driver)
                 .openMoreOptions()
                 .openFormLogin()
-                .fillLoginForm(Auth.builder().email("noa@gmail.com").password("Nnoa12345$").build())
+                .fillLoginForm(Auth.builder()
+                        .email("haifa@gmail.com")
+                        .password("Haifa082022$")
+                        .build())
                 .submitLogin()
                 .isSearchScreenDisplaeyd());
 
 
-
     }
+
     @Test
-    public void loginNegativeEmailModel(){
+    public void loginNegativeEmailModel() {
         new SearchScreen(driver)
                 .openMoreOptions()
                 .openFormLogin()
@@ -49,9 +53,18 @@ public class LoginTests extends AppiumConfig {
                 .isErrorMessageTest("Login or Password incorrect");
 
     }
+    @Test
+    public void loginNegativePasswordModel() {
+        new SearchScreen(driver)
+                .openMoreOptions()
+                .openFormLogin()
+                .fillLoginForm(Auth.builder().email("noa@gmail.com").password("Nnoa12345").build())
+                .submitLoginNegative()
+                .isErrorMessageTest("Login or Password incorrect");
 
+    }
     @AfterMethod
-    public void posCondition(){
+    public void posCondition() {
         new SearchScreen(driver)
                 .openMoreOptions()
                 .logout();
